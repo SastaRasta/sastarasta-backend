@@ -1,0 +1,43 @@
+{
+	"generate_blueprint": {
+		"prefix": "bp",
+		"body": [
+		  "from flask import Blueprint",
+		  "",
+		  "blueprint = Blueprint('$TM_FILENAME_BASE', __name__)",
+		  "",
+		  ""
+		],
+		"description": "generate_blueprint"
+	  },
+
+	"create_route": {
+		"prefix": "bpr",
+		"body": [
+		  "@blueprint.route('/$1', methods=[$2])",
+		  "def $1():",
+		  ""
+		],
+		"description": "create_route"
+	},
+
+	"create_get_route": {
+		"prefix": "bprg",
+		"body": [
+		  "@blueprint.route('/$1', methods=['GET'])",
+		  "def $1():",
+		  ""
+		],
+		"description": "create_route"
+	},
+
+	"create_post_route": {
+		"prefix": "bprp",
+		"body": [
+		  "@blueprint.route('/$1', methods=['POST'])",
+		  "def $1():",
+		  ""
+		],
+		"description": "create_route"
+	},
+}
