@@ -1,13 +1,17 @@
+from flask import Blueprint
+from urllib.parse import urlencode
 import os
-from supabase import create_client, Client
-from flask import Blueprint, url_for
-
-from authlib.integrations.flask_client import OAuth
-from urllib.parse import quote_plus, urlencode
 
 blueprint = Blueprint('auth', __name__)
 
-
-@blueprint.route('/signup', methods=['POST'])
+@blueprint.route('/login')
 def signup():
-	return 'hello'
+	params = {
+		"response_type": "token",
+		"client_id": os.environ.get('AUTH0_CLIENT_ID'),
+		"redirect_uri": os.environ.get('AUTH0_REDIRECT_URI'),
+		"scope": "openid profile email"
+	}
+
+	domain = os.environ.get('AUTH0_DOMAIN')
+	return { "url": f'https://{domain}/authorize?{urlencode(params)}' }

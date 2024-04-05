@@ -12,4 +12,8 @@ load_routes(app)
 oauth = OAuth(app)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('APP_PORT')) or 5000)
+    app.run(
+        host="0.0.0.0",
+        debug=True,
+        port=int(os.environ.get('APP_PORT')) or 5000
+    )
