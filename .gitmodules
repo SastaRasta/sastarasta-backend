@@ -1,0 +1,3 @@
+[submodule "genai"]
+	path = src/genai
+	url = git@github.com:SastaRasta/sastarasta-genai.git
