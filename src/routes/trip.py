@@ -19,4 +19,11 @@ def signup(user_info):
 	}
 
 	returnJson = suggest_trip(params)
-	return make_response(jsonify(returnJson), 200)
+	print(returnJson)
+	
+	res = make_response(returnJson['response'])
+	res.headers['Content-Type'] = 'text/html'
+	res.status_code = 200
+	res.mimetype = 'text/html'
+
+	return res
