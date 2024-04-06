@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response, jsonify
+from flask import Blueprint, request, make_response
 from middlewares.token_verification import token_required
 from genai.prompt import suggest_trip
 
