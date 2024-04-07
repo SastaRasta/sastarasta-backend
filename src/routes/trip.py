@@ -1,6 +1,7 @@
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request, make_response, request
 from middlewares.token_verification import token_required
 from genai.prompt import suggest_trip
+from genai.chatbot import get_chatbot_response
 
 blueprint = Blueprint('trip', __name__)
 
@@ -27,3 +28,10 @@ def signup(user_info):
 	res.mimetype = 'text/html'
 
 	return res
+
+@blueprint.route('/chat')
+@token_required
+def chat(user_info):
+	user_message = request.args.get('message')
+	response = get_chatbot_response(user_message)
+	return response
